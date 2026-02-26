@@ -41,7 +41,7 @@ const products = [
         name: "Canva Pro (1 Year)",
         desc: "Design like a professional with premium templates, brand kit access, and AI tools.",
         originalPrice: 3999,
-        price: 6000,
+        price: 1499,
         icon: "✨"
     },
     {
