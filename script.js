@@ -87,22 +87,44 @@ const scrollTopBtn = document.getElementById('scrollTopBtn');
 let selectedProduct = null;
 let previouslyFocusedElement = null;
 
+// Intersection Observer for scroll animations (Phase 4)
+const fadeOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -50px 0px"
+};
+
+const fadeObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, fadeOptions);
+
 // Initialize Products
 function renderProducts() {
     productGrid.innerHTML = '';
 
     products.forEach((product, index) => {
-        // Add simple staggered animation delay to cards
-        const delay = index * 0.1;
+        // Calculate savings
         const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
-        const badgeHtml = discount > 0 ? `<div style="position:absolute; top:15px; right:15px; background:var(--accent-primary); color:#0a0a0b; padding:4px 10px; border-radius:20px; font-weight:800; font-size:0.8rem;">${discount}% OFF</div>` : '';
 
-        const card = document.createElement('div');
-        card.className = 'product-card';
-        card.style.animation = `fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) ${delay}s backwards`;
+        // CRO Badges (Phase 3)
+        let badgesHtml = '';
+        if (product.id === 'canva-1y') {
+            badgesHtml += `<div class="urgency-badge">🔥 Only 3 Left!</div>`;
+        }
+        if (discount > 0) {
+            badgesHtml += `<div class="discount-badge">${discount}% OFF</div>`;
+        }
+
+        const card = document.createElement('article'); // Semantic HTML (Phase 2)
+        card.className = 'product-card fade-up-element'; // Scroll animation class
+        card.style.transitionDelay = `${(index % 4) * 0.15}s`;
 
         card.innerHTML = `
-      ${badgeHtml}
+      <div class="card-badges">${badgesHtml}</div>
       <div class="product-icon" role="img" aria-label="${product.name} icon">${product.icon}</div>
       <h3 class="product-name">${product.name}</h3>
       <p class="product-desc">${product.desc}</p>
@@ -114,6 +136,7 @@ function renderProducts() {
     `;
 
         productGrid.appendChild(card);
+        fadeObserver.observe(card);
     });
 
     // Attach event listeners to buy buttons
@@ -122,6 +145,13 @@ function renderProducts() {
             const productId = e.target.getAttribute('data-id');
             openModal(productId);
         });
+    });
+
+    // Observe step cards for scroll animation
+    document.querySelectorAll('.step-card').forEach((step, index) => {
+        step.classList.add('fade-up-element');
+        step.style.transitionDelay = `${index * 0.2}s`;
+        fadeObserver.observe(step);
     });
 }
 

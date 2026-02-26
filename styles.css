@@ -501,6 +501,125 @@ nav a:hover {
   box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
 }
 
+/* Card Badges (Phase 3) */
+.card-badges {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  z-index: 10;
+}
+
+.discount-badge {
+  background: var(--accent-primary);
+  color: #0a0a0b;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.8rem;
+}
+
+.urgency-badge {
+  background: #ff4757;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 0.8rem;
+  animation: pulseRed 2s infinite;
+}
+
+@keyframes pulseRed {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+    transform: scale(1);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+    transform: scale(1.05);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+    transform: scale(1);
+  }
+}
+
+/* Testimonials (Phase 3) */
+.testimonials-section {
+  padding: 5rem 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 2rem;
+  position: relative;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--accent-primary);
+}
+
+.testimonial-card .stars {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.testimonial-card .review-text {
+  color: var(--text-main);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.testimonial-card .user-name {
+  color: var(--accent-secondary);
+  font-weight: 600;
+}
+
+/* Scroll Animations (Phase 4) */
+.fade-up-element {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fade-up-element.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Updated hover state for product cards */
+.product-card {
+  transition: border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.product-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  /* Dynamic hover */
+  border-color: var(--accent-primary);
+  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.15);
+  /* Deeper glow */
+}
+
 /* Animations */
 @keyframes fadeUp {
   from {
