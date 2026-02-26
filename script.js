@@ -18,7 +18,7 @@ const products = [
         desc: "3 Months Career Premium. Short-term boost for your job search network.",
         originalPrice: 4500,
         price: 1499,
-        icon: "💼"
+        icon: "assets/icons/linkedin-ic.png"
     },
     {
         id: "linkedin-business-2m",
@@ -26,7 +26,7 @@ const products = [
         desc: "2 Months Business Premium. Enhance your business presence and networking capabilities.",
         originalPrice: 6000,
         price: 1599,
-        icon: "🏢"
+        icon: "assets/icons/linkedin-ic.png"
     },
     {
         id: "linkedin-sales-nav-2m",
@@ -34,7 +34,7 @@ const products = [
         desc: "2 Months Core access. Powerful tools for sales professionals. (New users only)",
         originalPrice: 12000,
         price: 1599,
-        icon: "🧭"
+        icon: "assets/icons/linkedin-ic.png"
     },
     {
         id: "canva-1y",
@@ -42,7 +42,7 @@ const products = [
         desc: "Design like a professional with premium templates, brand kit access, and AI tools.",
         originalPrice: 3999,
         price: 1499,
-        icon: "✨"
+        icon: "assets/icons/canva-ic.png"
     },
     {
         id: "cult-elite-1m",
@@ -50,7 +50,7 @@ const products = [
         desc: "Achieve fitness goals with unlimited access to premium workouts and elite gym centers.",
         originalPrice: 3000,
         price: 1999,
-        icon: "🏋️‍♂️"
+        icon: "assets/icons/cult-ic.png"
     },
     {
         id: "sonyliv-1y",
@@ -58,7 +58,7 @@ const products = [
         desc: "1 Year Premium Subscription. Enjoy exclusive movies, web series, and live sports ad-free.",
         originalPrice: 999,
         price: 499,
-        icon: "🎬"
+        icon: "assets/icons/sony-ic.png"
     },
     {
         id: "zee5-1y",
@@ -66,7 +66,7 @@ const products = [
         desc: "1 Year Premium Subscription. Stream HD movies, TV shows, and original web series.",
         originalPrice: 1999,
         price: 1499,
-        icon: "🍿"
+        icon: "assets/icons/zee5-ic.png"
     }
 ];
 
@@ -125,7 +125,7 @@ function renderProducts() {
 
         card.innerHTML = `
       <div class="card-badges">${badgesHtml}</div>
-      <div class="product-icon" role="img" aria-label="${product.name} icon">${product.icon}</div>
+      <div class="product-icon"><img src="${product.icon}" alt="${product.name} icon" loading="lazy" style="width:100%; height:100%; border-radius:15px; object-fit:cover;"></div>
       <h3 class="product-name">${product.name}</h3>
       <p class="product-desc">${product.desc}</p>
       <div class="product-price-box">
