@@ -169,7 +169,7 @@ function openModal(productId) {
 
     // Construct UPI URL string (in case it's needed elsewhere or for deep linking on mobile later)
     const upiUrl = `upi://pay?pa=${UPI_ID}&pn=Price%20Error&am=${selectedProduct.price}&cu=INR`;
-    modalQrCode.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${encodeURIComponent(upiUrl)}`;
+    modalQrCode.src = `assets/payment-qr.jpg`;
 
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden'; // prevent background scrolling
