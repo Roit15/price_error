@@ -179,8 +179,15 @@ function renderProducts() {
 
         // Badges
         let badgesHtml = '';
-        if (product.id === 'canva-1y') {
-            badgesHtml += `<div class="urgency-badge">🔥 3 Left</div>`;
+        // Urgency badges on select products
+        const urgencyMap = {
+            'canva-1y': '🔥 3 Left',
+            'linkedin-carrier-12m': '⚡ Popular',
+            'cult-elite-1m': '🏃 5 Left',
+            'sonyliv-1y': '🎬 Hot Deal'
+        };
+        if (urgencyMap[product.id]) {
+            badgesHtml += `<div class="urgency-badge">${urgencyMap[product.id]}</div>`;
         }
         if (discount > 0) {
             badgesHtml += `<div class="discount-badge">${discount}% OFF</div>`;
@@ -404,4 +411,56 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const statsRow = document.querySelector('.stats-row');
     if (statsRow) heroObserver.observe(statsRow);
+
+    // Observe FAQ items for scroll animation
+    document.querySelectorAll('.faq-item').forEach((item, index) => {
+        item.style.transitionDelay = `${index * 0.08}s`;
+        fadeObserver.observe(item);
+    });
+
+    // Social proof toast notifications
+    initSocialProof();
 });
+
+// ==========================================
+// Social Proof Toast Notifications
+// ==========================================
+function initSocialProof() {
+    const toast = document.getElementById('socialProofToast');
+    const toastText = document.getElementById('toastText');
+    if (!toast || !toastText) return;
+
+    const messages = [
+        'Someone in Mumbai bought LinkedIn Career (12M)',
+        'Rahul from Delhi just got Canva Pro',
+        'Sneha from Bangalore purchased Cult Elite',
+        'Ayush from Pune bought LinkedIn Business',
+        'Someone in Hyderabad got Sony Liv Premium',
+        'Priya from Chennai bought Zee5 HD Premium',
+        'Arjun from Jaipur got LinkedIn Sales Navigator',
+        'Someone in Kolkata purchased Canva Pro'
+    ];
+
+    const timeAgo = ['2 mins ago', '5 mins ago', '8 mins ago', '12 mins ago', '15 mins ago'];
+
+    let index = 0;
+
+    function showToast() {
+        const msg = messages[index % messages.length];
+        const time = timeAgo[Math.floor(Math.random() * timeAgo.length)];
+        toastText.textContent = `${msg} \u2022 ${time}`;
+        toast.classList.add('visible');
+
+        setTimeout(() => {
+            toast.classList.remove('visible');
+        }, 4000);
+
+        index++;
+    }
+
+    // First toast after 8 seconds, then every 15 seconds
+    setTimeout(() => {
+        showToast();
+        setInterval(showToast, 15000);
+    }, 8000);
+}
