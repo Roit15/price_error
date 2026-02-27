@@ -125,7 +125,7 @@ function renderProducts() {
 
         card.innerHTML = `
       <div class="card-badges">${badgesHtml}</div>
-      <div class="product-icon"><img src="${product.icon}" alt="${product.name} icon" loading="lazy" style="width:100%; height:100%; border-radius:15px; object-fit:cover;"></div>
+      <div class="product-icon"><img src="${product.icon}?v=4" alt="${product.name} icon" loading="lazy" style="width:100%; height:100%; border-radius:15px; object-fit:cover;"></div>
       <h3 class="product-name">${product.name}</h3>
       <p class="product-desc">${product.desc}</p>
       <div class="product-price-box">
