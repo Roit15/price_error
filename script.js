@@ -2,7 +2,7 @@
 const UPI_ID = "8569977977-2@ybl";
 const WHATSAPP_NUMBER = "918569977977";
 
-// Subscription Data
+// Subscription Data — each has a `category` for filtering
 const products = [
     {
         id: "linkedin-carrier-12m",
@@ -10,7 +10,8 @@ const products = [
         desc: "12 Months Career Premium. Unlock InMails, see who viewed your profile, and gain premium insights.",
         originalPrice: 15000,
         price: 3499,
-        icon: "💼"
+        icon: "assets/icons/linkedin-ic.png",
+        category: "linkedin"
     },
     {
         id: "linkedin-carrier-3m",
@@ -18,7 +19,8 @@ const products = [
         desc: "3 Months Career Premium. Short-term boost for your job search network.",
         originalPrice: 4500,
         price: 1499,
-        icon: "assets/icons/linkedin-ic.png"
+        icon: "assets/icons/linkedin-ic.png",
+        category: "linkedin"
     },
     {
         id: "linkedin-business-2m",
@@ -26,7 +28,8 @@ const products = [
         desc: "2 Months Business Premium. Enhance your business presence and networking capabilities.",
         originalPrice: 6000,
         price: 1599,
-        icon: "assets/icons/linkedin-ic.png"
+        icon: "assets/icons/linkedin-ic.png",
+        category: "linkedin"
     },
     {
         id: "linkedin-sales-nav-2m",
@@ -34,7 +37,8 @@ const products = [
         desc: "2 Months Core access. Powerful tools for sales professionals. (New users only)",
         originalPrice: 12000,
         price: 1599,
-        icon: "assets/icons/linkedin-ic.png"
+        icon: "assets/icons/linkedin-ic.png",
+        category: "linkedin"
     },
     {
         id: "canva-1y",
@@ -42,7 +46,8 @@ const products = [
         desc: "Design like a professional with premium templates, brand kit access, and AI tools.",
         originalPrice: 3999,
         price: 1499,
-        icon: "assets/icons/canva-ic.png"
+        icon: "assets/icons/canva-ic.png",
+        category: "design"
     },
     {
         id: "cult-elite-1m",
@@ -50,7 +55,8 @@ const products = [
         desc: "Achieve fitness goals with unlimited access to premium workouts and elite gym centers.",
         originalPrice: 3000,
         price: 1999,
-        icon: "assets/icons/cult-ic.png"
+        icon: "assets/icons/cult-ic.png",
+        category: "fitness"
     },
     {
         id: "sonyliv-1y",
@@ -58,7 +64,8 @@ const products = [
         desc: "1 Year Premium Subscription. Enjoy exclusive movies, web series, and live sports ad-free.",
         originalPrice: 999,
         price: 499,
-        icon: "assets/icons/sony-ic.png"
+        icon: "assets/icons/sony-ic.png",
+        category: "entertainment"
     },
     {
         id: "zee5-1y",
@@ -66,7 +73,8 @@ const products = [
         desc: "1 Year Premium Subscription. Stream HD movies, TV shows, and original web series.",
         originalPrice: 1999,
         price: 1499,
-        icon: "assets/icons/zee5-ic.png"
+        icon: "assets/icons/zee5-ic.png",
+        category: "entertainment"
     }
 ];
 
@@ -83,14 +91,18 @@ const whatsappShareBtn = document.getElementById('whatsappShareBtn');
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navMenu = document.getElementById('navMenu');
 const scrollTopBtn = document.getElementById('scrollTopBtn');
+const categoryFilters = document.getElementById('categoryFilters');
 
 let selectedProduct = null;
 let previouslyFocusedElement = null;
+let currentCategory = 'all';
 
-// Intersection Observer for scroll animations (Phase 4)
+// ==========================================
+// Intersection Observer for scroll animations
+// ==========================================
 const fadeOptions = {
     threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
+    rootMargin: "0px 0px -40px 0px"
 };
 
 const fadeObserver = new IntersectionObserver((entries, observer) => {
@@ -102,30 +114,86 @@ const fadeObserver = new IntersectionObserver((entries, observer) => {
     });
 }, fadeOptions);
 
-// Initialize Products
+// ==========================================
+// Animated Number Counter
+// ==========================================
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-number[data-target]');
+    counters.forEach(counter => {
+        const target = parseInt(counter.getAttribute('data-target'));
+        const duration = 1600;
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out cubic
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const current = Math.round(eased * target);
+            counter.textContent = current + (target >= 100 ? '+' : '');
+            if (progress < 1) {
+                requestAnimationFrame(updateCounter);
+            }
+        }
+        requestAnimationFrame(updateCounter);
+    });
+}
+
+// ==========================================
+// Category Filtering
+// ==========================================
+if (categoryFilters) {
+    categoryFilters.addEventListener('click', (e) => {
+        const pill = e.target.closest('.category-pill');
+        if (!pill) return;
+
+        // Update active state
+        categoryFilters.querySelectorAll('.category-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+
+        currentCategory = pill.getAttribute('data-category');
+        filterProducts();
+    });
+}
+
+function filterProducts() {
+    const cards = productGrid.querySelectorAll('.product-card');
+    cards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (currentCategory === 'all' || cat === currentCategory) {
+            card.classList.remove('hidden');
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+}
+
+// ==========================================
+// Render Products
+// ==========================================
 function renderProducts() {
     productGrid.innerHTML = '';
 
     products.forEach((product, index) => {
-        // Calculate savings
         const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
 
-        // CRO Badges (Phase 3)
+        // Badges
         let badgesHtml = '';
         if (product.id === 'canva-1y') {
-            badgesHtml += `<div class="urgency-badge">🔥 Only 3 Left!</div>`;
+            badgesHtml += `<div class="urgency-badge">🔥 3 Left</div>`;
         }
         if (discount > 0) {
             badgesHtml += `<div class="discount-badge">${discount}% OFF</div>`;
         }
 
-        const card = document.createElement('article'); // Semantic HTML (Phase 2)
-        card.className = 'product-card fade-up-element'; // Scroll animation class
-        card.style.transitionDelay = `${(index % 4) * 0.15}s`;
+        const card = document.createElement('article');
+        card.className = 'product-card fade-up-element';
+        card.setAttribute('data-category', product.category);
+        card.style.transitionDelay = `${(index % 4) * 0.1}s`;
 
         card.innerHTML = `
       <div class="card-badges">${badgesHtml}</div>
-      <div class="product-icon"><img src="${product.icon}?v=4" alt="${product.name} icon" loading="lazy" style="width:100%; height:100%; border-radius:15px; object-fit:cover;"></div>
+      <div class="product-icon"><img src="${product.icon}?v=6" alt="${product.name} icon" loading="lazy" style="width:100%; height:100%; border-radius:12px; object-fit:cover;"></div>
       <h3 class="product-name">${product.name}</h3>
       <p class="product-desc">${product.desc}</p>
       <div class="product-price-box">
@@ -139,42 +207,70 @@ function renderProducts() {
         fadeObserver.observe(card);
     });
 
-    // Attach event listeners to buy buttons
+    // Buy button listeners
     document.querySelectorAll('.buy-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
-            const productId = e.target.getAttribute('data-id');
+            const productId = e.target.closest('.buy-btn').getAttribute('data-id');
             openModal(productId);
         });
     });
 
-    // Observe step cards for scroll animation
+    // Observe step cards
     document.querySelectorAll('.step-card').forEach((step, index) => {
         step.classList.add('fade-up-element');
-        step.style.transitionDelay = `${index * 0.2}s`;
+        step.style.transitionDelay = `${index * 0.15}s`;
         fadeObserver.observe(step);
+    });
+
+    // Observe testimonials
+    document.querySelectorAll('.testimonial-card').forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.12}s`;
+        fadeObserver.observe(card);
     });
 }
 
+// ==========================================
+// Card Tilt Effect on Mouse Move
+// ==========================================
+function initCardTilt() {
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -4;
+            const rotateY = ((x - centerX) / centerX) * 4;
+
+            card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+}
+
+// ==========================================
 // Modal Logic
+// ==========================================
 function openModal(productId) {
     selectedProduct = products.find(p => p.id === productId);
     if (!selectedProduct) return;
 
     previouslyFocusedElement = document.activeElement;
 
-    // Populate Details
     modalProductName.textContent = selectedProduct.name;
     modalProductPrice.textContent = selectedProduct.price.toLocaleString();
     upiIdText.textContent = UPI_ID;
 
-    // Construct UPI URL string (in case it's needed elsewhere or for deep linking on mobile later)
-    const upiUrl = `upi://pay?pa=${UPI_ID}&pn=Price%20Error&am=${selectedProduct.price}&cu=INR`;
     modalQrCode.src = `assets/payment-qr.jpg`;
 
     modalOverlay.classList.add('active');
-    document.body.style.overflow = 'hidden'; // prevent background scrolling
+    document.body.style.overflow = 'hidden';
 
-    // Set focus to the first interactive element in modal
     setTimeout(() => closeModalBtn.focus(), 100);
 }
 
@@ -185,12 +281,12 @@ function closeModal() {
     if (previouslyFocusedElement) previouslyFocusedElement.focus();
 }
 
+// ==========================================
 // Event Listeners
+// ==========================================
 closeModalBtn.addEventListener('click', closeModal);
 modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) {
-        closeModal();
-    }
+    if (e.target === modalOverlay) closeModal();
 });
 
 document.addEventListener('keydown', (e) => {
@@ -200,18 +296,18 @@ document.addEventListener('keydown', (e) => {
 
     // Focus trapping
     if (e.key === 'Tab' && modalOverlay.classList.contains('active')) {
-        const focusableElements = modalOverlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
+        const focusable = modalOverlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
 
-        if (e.shiftKey) { // Shift + Tab
-            if (document.activeElement === firstElement) {
-                lastElement.focus();
+        if (e.shiftKey) {
+            if (document.activeElement === first) {
+                last.focus();
                 e.preventDefault();
             }
-        } else { // Tab
-            if (document.activeElement === lastElement) {
-                firstElement.focus();
+        } else {
+            if (document.activeElement === last) {
+                first.focus();
                 e.preventDefault();
             }
         }
@@ -220,42 +316,39 @@ document.addEventListener('keydown', (e) => {
 
 copyUpiBtn.addEventListener('click', () => {
     navigator.clipboard.writeText(UPI_ID).then(() => {
-        const originalText = copyUpiBtn.textContent;
+        const original = copyUpiBtn.textContent;
         copyUpiBtn.textContent = 'Copied!';
-        setTimeout(() => {
-            copyUpiBtn.textContent = originalText;
-        }, 2000);
+        setTimeout(() => { copyUpiBtn.textContent = original; }, 2000);
     });
 });
 
 whatsappShareBtn.addEventListener('click', () => {
     if (!selectedProduct) return;
 
-    const btnTextSpan = whatsappShareBtn.querySelector('.btn-text');
-    const originalText = btnTextSpan.textContent;
-    btnTextSpan.textContent = "Opening WhatsApp...";
+    const btnText = whatsappShareBtn.querySelector('.btn-text');
+    const original = btnText.textContent;
+    btnText.textContent = "Opening WhatsApp...";
     whatsappShareBtn.style.opacity = '0.8';
 
     setTimeout(() => {
         const text = `Hi Price Error team! I have just paid ₹${selectedProduct.price} for *${selectedProduct.name}*. Here is my payment screenshot for verification.`;
-        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
-        window.open(whatsappUrl, '_blank');
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+        window.open(url, '_blank');
 
-        btnTextSpan.textContent = originalText;
+        btnText.textContent = original;
         whatsappShareBtn.style.opacity = '1';
         closeModal();
-    }, 800);
+    }, 600);
 });
 
 // Mobile menu toggle
 if (mobileMenuBtn && navMenu) {
     mobileMenuBtn.addEventListener('click', () => {
-        const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true' || false;
+        const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
         mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
         navMenu.classList.toggle('open');
     });
 
-    // Close menu when clicking a link
     navMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navMenu.classList.remove('open');
@@ -281,20 +374,34 @@ if (scrollTopBtn) {
     });
 }
 
-// Smooth scroll for nav links
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const targetId = this.getAttribute('href');
         if (targetId === '#') return;
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-        }
+        const el = document.querySelector(targetId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
     });
 });
 
+// ==========================================
 // Init
+// ==========================================
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
+    initCardTilt();
+
+    // Start counter animation once hero is visible
+    const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounters();
+                heroObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    const statsRow = document.querySelector('.stats-row');
+    if (statsRow) heroObserver.observe(statsRow);
 });
