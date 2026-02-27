@@ -1012,25 +1012,63 @@ footer p {
     font-size: 1.8rem;
   }
 
-  /* Horizontal scroll on mobile */
+  /* Compact 2-column grid on mobile */
   .product-grid {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 1rem;
-    padding-bottom: 1rem;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .product-grid::-webkit-scrollbar {
-    display: none;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
 
   .product-card {
-    min-width: 260px;
-    flex-shrink: 0;
-    scroll-snap-align: start;
+    padding: 1rem;
+  }
+
+  .product-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    margin-bottom: 0.8rem;
+  }
+
+  .product-name {
+    font-size: 0.95rem;
+  }
+
+  .product-desc {
+    font-size: 0.78rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.45;
+  }
+
+  .product-price-box {
+    margin-bottom: 0.8rem;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .original-price {
+    font-size: 0.78rem;
+  }
+
+  .current-price {
+    font-size: 1.3rem;
+  }
+
+  .buy-btn {
+    padding: 0.6rem;
+    font-size: 0.82rem;
+  }
+
+  .card-badges {
+    top: 8px;
+    right: 8px;
+    gap: 4px;
+  }
+
+  .discount-badge,
+  .urgency-badge {
+    font-size: 0.65rem;
+    padding: 2px 7px;
   }
 
   .steps-grid {
