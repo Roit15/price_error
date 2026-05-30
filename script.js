@@ -92,6 +92,7 @@ const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navMenu = document.getElementById('navMenu');
 const scrollTopBtn = document.getElementById('scrollTopBtn');
 const categoryFilters = document.getElementById('categoryFilters');
+const mobileStickyBar = document.querySelector('.mobile-sticky-bar');
 
 let selectedProduct = null;
 let previouslyFocusedElement = null;
@@ -240,6 +241,8 @@ function renderProducts() {
 // Card Tilt Effect on Mouse Move
 // ==========================================
 function initCardTilt() {
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+
     const cards = document.querySelectorAll('.product-card');
     cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -372,6 +375,10 @@ window.addEventListener('scroll', () => {
     } else {
         scrollTopBtn.classList.remove('visible');
         scrollTopBtn.setAttribute('hidden', 'true');
+    }
+
+    if (mobileStickyBar) {
+        mobileStickyBar.classList.toggle('visible', window.scrollY > 420);
     }
 });
 

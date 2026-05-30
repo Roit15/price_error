@@ -582,7 +582,7 @@ footer {
 /* ---------- Responsive Cartoon Adjustments ---------- */
 @media (max-width: 768px) {
   .product-card:hover {
-    transform: translateY(-4px) scale(1.02) !important;
+    transform: translateY(-3px) !important;
   }
 
   .navbar {
@@ -600,6 +600,12 @@ footer {
   }
 
   .product-card:hover {
-    box-shadow: 6px 6px 0px #1B1B1B !important;
+    box-shadow: 5px 5px 0px #1B1B1B !important;
+  }
+
+  .mobile-sticky-bar {
+    border: var(--cartoon-border) !important;
+    border-radius: 18px !important;
+    box-shadow: 4px 4px 0px #1B1B1B !important;
   }
 }

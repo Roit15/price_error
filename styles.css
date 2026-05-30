@@ -1105,8 +1105,8 @@ footer p {
   nav#navMenu {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 260px;
+    right: 12px;
+    width: min(260px, calc(100vw - 48px));
     height: 100vh;
     background: rgba(250, 250, 245, 0.98);
     backdrop-filter: blur(20px);
@@ -1114,14 +1114,15 @@ footer p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateX(calc(100% + 24px));
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 100;
     border-left: 1px solid var(--border-light);
     box-shadow: -8px 0 30px rgba(0, 0, 0, 0.08);
   }
 
   nav#navMenu.open {
-    right: 0;
+    transform: translateX(0);
   }
 
   nav#navMenu a {
@@ -1135,88 +1136,117 @@ footer p {
   }
 
   .hero {
-    padding: 100px 5% 40px;
+    padding: 122px 5% 26px;
+    overflow: hidden;
+  }
+
+  .hero-background-glow {
+    width: min(680px, 115vw);
+    height: min(680px, 115vw);
   }
 
   .hero h1 {
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 9vw, 2.45rem);
     letter-spacing: -0.8px;
   }
 
   .hero p {
     font-size: 0.92rem;
+    margin-bottom: 1.2rem;
   }
 
   .hero-actions {
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.9rem;
+  }
+
+  .hero-actions .btn-primary {
+    width: min(100%, 260px);
+    justify-content: center;
   }
 
   .stats-row {
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .stat-number {
     font-size: 1.2rem;
   }
 
-  /* Compact 2-column grid on mobile */
+  .products-section,
+  .how-it-works-section,
+  .testimonials-section {
+    padding: 2.7rem 5%;
+  }
+
+  .category-filters {
+    justify-content: center;
+    gap: 0.65rem;
+    margin-bottom: 1.8rem;
+  }
+
+  /* Single-column cards keep prices, text, and CTAs readable on phones. */
   .product-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.1rem;
+    max-width: 430px;
+    margin: 0 auto;
   }
 
   .product-card {
-    padding: 1rem;
+    padding: 1.25rem;
+    min-height: auto;
   }
 
   .product-icon {
-    width: 44px;
-    height: 44px;
+    width: 54px;
+    height: 54px;
     border-radius: 10px;
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
   }
 
   .product-name {
-    font-size: 0.95rem;
+    font-size: 1.12rem;
   }
 
   .product-desc {
-    font-size: 0.78rem;
-    margin-bottom: 0.8rem;
-    line-height: 1.45;
+    font-size: 0.92rem;
+    margin-bottom: 1rem;
+    line-height: 1.55;
   }
 
   .product-price-box {
-    margin-bottom: 0.8rem;
-    flex-direction: column;
-    gap: 0.15rem;
+    margin-bottom: 1rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.55rem;
   }
 
   .original-price {
-    font-size: 0.78rem;
+    font-size: 0.86rem;
   }
 
   .current-price {
-    font-size: 1.3rem;
+    font-size: 1.65rem;
   }
 
   .buy-btn {
-    padding: 0.6rem;
-    font-size: 0.82rem;
+    min-height: 46px;
+    padding: 0.75rem;
+    font-size: 0.92rem;
   }
 
   .card-badges {
-    top: 8px;
-    right: 8px;
+    top: 10px;
+    right: 10px;
     gap: 4px;
   }
 
   .discount-badge,
   .urgency-badge {
-    font-size: 0.65rem;
-    padding: 2px 7px;
+    font-size: 0.7rem;
+    padding: 3px 8px;
   }
 
   .steps-grid {
@@ -1238,19 +1268,24 @@ footer p {
 
   /* Sticky mobile CTA */
   .mobile-sticky-bar {
-    display: flex;
+    display: none;
     position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
     padding: 0.8rem 1rem;
     background: rgba(250, 250, 245, 0.95);
     backdrop-filter: blur(12px);
-    border-top: 1px solid var(--border-light);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
     z-index: 90;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.06);
+  }
+
+  .mobile-sticky-bar.visible {
+    display: none;
   }
 
   .mobile-sticky-bar .sticky-text {
@@ -1267,8 +1302,9 @@ footer p {
   }
 
   .mobile-sticky-bar .btn-primary {
-    padding: 0.65rem 1.4rem;
-    font-size: 0.9rem;
+    padding: 0.65rem 1rem;
+    font-size: 0.86rem;
+    white-space: nowrap;
   }
 
   .scroll-top-btn {
@@ -1280,22 +1316,11 @@ footer p {
   }
 
   .whatsapp-float {
-    bottom: 72px;
-    left: 16px;
-    width: 48px;
-    height: 48px;
-  }
-
-  .whatsapp-float svg {
-    width: 22px;
-    height: 22px;
+    display: none;
   }
 
   .social-proof-toast {
-    left: 16px;
-    right: 16px;
-    bottom: 72px;
-    font-size: 0.78rem;
+    display: none;
   }
 
   .faq-section {
@@ -1315,7 +1340,7 @@ footer p {
 
 @media (max-width: 480px) {
   .hero h1 {
-    font-size: 1.55rem;
+    font-size: clamp(1.65rem, 8vw, 2rem);
   }
 
   .stat-number {
@@ -1329,6 +1354,10 @@ footer p {
   .category-pill {
     font-size: 0.82rem;
     padding: 0.4rem 1rem;
+  }
+
+  .mobile-sticky-bar {
+    padding: 0.7rem 0.8rem;
   }
 }
 
