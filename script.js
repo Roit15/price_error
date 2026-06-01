@@ -80,6 +80,15 @@ const products = [
         category: "fitness"
     },
     {
+        id: "thyrocare-aarogyam-basic-2",
+        name: "Thyrocare Aarogyam Basic 2",
+        desc: "Full body health checkup at home with 90+ tests. Includes CBC, diabetes, thyroid, liver & kidney, lipid profile, iron deficiency, urine analysis, and digital reports.",
+        originalPrice: 1999,
+        price: 499,
+        icon: "assets/icons/health-checkup-ic.svg",
+        category: "health"
+    },
+    {
         id: "sonyliv-1y",
         name: "Sony Liv (1 Year)",
         desc: "1 Year Premium Subscription. Enjoy exclusive movies, web series, and live sports ad-free.",
@@ -231,6 +240,7 @@ function renderProducts() {
             'canva-1y': '3 Left',
             'linkedin-career-premium': 'Popular',
             'cult-elite-1m': '5 Left',
+            'thyrocare-aarogyam-basic-2': '90+ Tests',
             'sonyliv-1y': 'Hot Deal',
             'prime-video-6m': 'New'
         };
