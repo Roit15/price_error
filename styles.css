@@ -467,6 +467,14 @@ nav a:hover::after {
   letter-spacing: -1px;
 }
 
+.price-unit {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0;
+  margin-left: 1px;
+}
+
 .buy-btn {
   width: 100%;
   padding: 0.75rem;
@@ -778,6 +786,13 @@ nav a:hover::after {
 .price-display .currency {
   font-size: 1.6rem;
   vertical-align: super;
+}
+
+.price-display .price-period {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  letter-spacing: 0;
 }
 
 .qr-container {
