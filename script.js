@@ -1,5 +1,5 @@
 // Settings
-const UPI_ID = "8569977977-2@ybl";
+const UPI_ID = "8569977977@ybl";
 const WHATSAPP_NUMBER = "918569977977";
 
 // Subscription Data — each has a `category` for filtering
