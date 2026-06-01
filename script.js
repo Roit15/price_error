@@ -32,38 +32,32 @@ const products = [
         category: "ai"
     },
     {
-        id: "linkedin-carrier-12m",
-        name: "LinkedIn Career (12M)",
-        desc: "12 Months Career Premium. Unlock InMails, see who viewed your profile, and gain premium insights.",
-        originalPrice: 15000,
-        price: 3499,
+        id: "linkedin-career-premium",
+        name: "LinkedIn Career Premium",
+        desc: "See who viewed your profile, InMail & message anyone, job search & apply, interview prep, and salary insights. + ₹1499 voucher (if applicable).",
+        originalPrice: 996,
+        price: 249,
+        unit: "/mo",
         icon: "assets/icons/linkedin-ic.png",
         category: "linkedin"
     },
     {
-        id: "linkedin-carrier-3m",
-        name: "LinkedIn Career (3M)",
-        desc: "3 Months Career Premium. Short-term boost for your job search network.",
-        originalPrice: 4500,
-        price: 1499,
+        id: "linkedin-business-premium",
+        name: "LinkedIn Business Premium",
+        desc: "Lead generation, advanced search filters, company insights, Sales Navigator features, and insights & analytics. + ₹1499 voucher (if applicable).",
+        originalPrice: 1996,
+        price: 499,
+        unit: "/mo",
         icon: "assets/icons/linkedin-ic.png",
         category: "linkedin"
     },
     {
-        id: "linkedin-business-2m",
-        name: "LinkedIn Business (2M)",
-        desc: "2 Months Business Premium. Enhance your business presence and networking capabilities.",
-        originalPrice: 6000,
-        price: 1599,
-        icon: "assets/icons/linkedin-ic.png",
-        category: "linkedin"
-    },
-    {
-        id: "linkedin-sales-nav-2m",
-        name: "LinkedIn Sales Navigator",
-        desc: "2 Months Core access. Powerful tools for sales professionals. (New users only)",
-        originalPrice: 12000,
-        price: 1599,
+        id: "linkedin-sales-navigator-core",
+        name: "LinkedIn Sales Navigator Core",
+        desc: "Advanced lead search, lead & account insights, smart filters, real-time updates, and Sales Navigator Core. + ₹1499 voucher (if applicable).",
+        originalPrice: 8920,
+        price: 2230,
+        unit: "/mo",
         icon: "assets/icons/linkedin-ic.png",
         category: "linkedin"
     },
@@ -111,6 +105,7 @@ const modalOverlay = document.getElementById('paymentModal');
 const closeModalBtn = document.getElementById('closeModal');
 const modalProductName = document.getElementById('modalProductName');
 const modalProductPrice = document.getElementById('modalProductPrice');
+const modalPricePeriod = document.getElementById('modalPricePeriod');
 const modalQrCode = document.getElementById('modalQrCode');
 const upiIdText = document.getElementById('upiIdText');
 const copyUpiBtn = document.getElementById('copyUpiBtn');
@@ -213,7 +208,7 @@ function renderProducts() {
             'chatgpt-plus-1m': 'Popular',
             'notion-business-ai-3m': 'Limited',
             'canva-1y': '3 Left',
-            'linkedin-carrier-12m': 'Popular',
+            'linkedin-career-premium': 'Popular',
             'cult-elite-1m': '5 Left',
             'sonyliv-1y': 'Hot Deal'
         };
@@ -236,7 +231,7 @@ function renderProducts() {
       <p class="product-desc">${product.desc}</p>
       <div class="product-price-box">
         <span class="original-price">₹${product.originalPrice.toLocaleString()}</span>
-        <span class="current-price">₹${product.price.toLocaleString()}</span>
+        <span class="current-price">₹${product.price.toLocaleString()}${product.unit ? `<span class="price-unit">${product.unit}</span>` : ''}</span>
       </div>
       <button class="buy-btn" data-id="${product.id}">Buy Now</button>
     `;
@@ -304,6 +299,7 @@ function openModal(productId) {
 
     modalProductName.textContent = selectedProduct.name;
     modalProductPrice.textContent = selectedProduct.price.toLocaleString();
+    if (modalPricePeriod) modalPricePeriod.textContent = selectedProduct.unit ? ' /month' : '';
     upiIdText.textContent = UPI_ID;
 
     modalQrCode.src = `assets/payment-qr.jpg?v=20260601-qr-clean`;
@@ -468,13 +464,13 @@ function initSocialProof() {
     if (!toast || !toastText) return;
 
     const messages = [
-        'Someone in Mumbai bought LinkedIn Career (12M)',
+        'Someone in Mumbai bought LinkedIn Career Premium',
         'Rahul from Delhi just got Canva Pro',
         'Sneha from Bangalore purchased Cult Elite',
         'Ayush from Pune bought LinkedIn Business',
         'Someone in Hyderabad got Sony Liv Premium',
         'Priya from Chennai bought Zee5 HD Premium',
-        'Arjun from Jaipur got LinkedIn Sales Navigator',
+        'Arjun from Jaipur got LinkedIn Sales Navigator Core',
         'Someone in Kolkata purchased Canva Pro'
     ];
 
