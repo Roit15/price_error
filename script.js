@@ -5,6 +5,33 @@ const WHATSAPP_NUMBER = "918569977977";
 // Subscription Data — each has a `category` for filtering
 const products = [
     {
+        id: "gemini-pro-18m",
+        name: "Gemini AI Pro + VEO3 + 5TB",
+        desc: "18 Months access with Gemini 2.5 Pro, VEO3, Flow AI, NotebookLM, Workspace AI, 1000 AI credits/month, and 5TB storage.",
+        originalPrice: 35100,
+        price: 2999,
+        icon: "assets/icons/gemini-ic.svg",
+        category: "ai"
+    },
+    {
+        id: "chatgpt-plus-1m",
+        name: "ChatGPT Plus (1 Month)",
+        desc: "Personal account access on your email. Full warranty available after activation.",
+        originalPrice: 1999,
+        price: 549,
+        icon: "assets/icons/chatgpt-ic.svg",
+        category: "ai"
+    },
+    {
+        id: "notion-business-ai-3m",
+        name: "Notion Business + AI (3M)",
+        desc: "Customer email invite with private access. Includes Notion AI, unlimited pages, team workspaces, permissions, and project tools.",
+        originalPrice: 12500,
+        price: 999,
+        icon: "assets/icons/notion-ic.svg",
+        category: "ai"
+    },
+    {
         id: "linkedin-carrier-12m",
         name: "LinkedIn Career (12M)",
         desc: "12 Months Career Premium. Unlock InMails, see who viewed your profile, and gain premium insights.",
@@ -182,6 +209,9 @@ function renderProducts() {
         let badgesHtml = '';
         // Urgency badges on select products
         const urgencyMap = {
+            'gemini-pro-18m': '✨ AI Deal',
+            'chatgpt-plus-1m': '⚡ Hot',
+            'notion-business-ai-3m': '🔥 Limited',
             'canva-1y': '🔥 3 Left',
             'linkedin-carrier-12m': '⚡ Popular',
             'cult-elite-1m': '🏃 5 Left',

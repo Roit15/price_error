@@ -782,16 +782,23 @@ nav a:hover::after {
 
 .qr-container {
   background: #fff;
-  padding: 0.8rem;
+  padding: 0.9rem;
   border-radius: var(--radius-md);
   display: inline-block;
   margin-bottom: 1.2rem;
   border: 1px solid var(--border-light);
+  max-width: min(320px, 84vw);
 }
 
 .qr-container img {
-  width: 160px;
-  height: 160px;
+  width: min(280px, 72vw);
+  height: auto;
+  max-height: 68vh;
+  display: block;
+  object-fit: contain;
+}
+
+#modalQrCode {
   display: block;
 }
 
