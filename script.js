@@ -148,7 +148,7 @@ const fadeObserver = new IntersectionObserver((entries, observer) => {
 function animateCounters() {
     const counters = document.querySelectorAll('.stat-number[data-target]');
     counters.forEach(counter => {
-        const target = parseInt(counter.getAttribute('data-target'));
+        const target = parseInt(counter.getAttribute('data-target'), 10);
         const duration = 1600;
         const startTime = performance.now();
 
