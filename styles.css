@@ -1207,68 +1207,76 @@ footer p {
     margin-bottom: 1.8rem;
   }
 
-  /* Single-column cards keep prices, text, and CTAs readable on phones. */
+  /* Two compact cards per row on phones. */
   .product-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.1rem;
-    max-width: 430px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.8rem;
+    max-width: 520px;
     margin: 0 auto;
   }
 
   .product-card {
-    padding: 1.25rem;
+    padding: 0.85rem;
     min-height: auto;
+    border-radius: 12px;
   }
 
   .product-icon {
-    width: 54px;
-    height: 54px;
+    width: 44px;
+    height: 44px;
     border-radius: 10px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
   .product-name {
-    font-size: 1.12rem;
+    font-size: 0.94rem;
+    line-height: 1.28;
+    margin-bottom: 0.35rem;
   }
 
   .product-desc {
-    font-size: 0.92rem;
-    margin-bottom: 1rem;
-    line-height: 1.55;
+    font-size: 0.76rem;
+    margin-bottom: 0.75rem;
+    line-height: 1.45;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .product-price-box {
-    margin-bottom: 1rem;
-    flex-direction: row;
+    margin-bottom: 0.75rem;
+    flex-direction: column;
     flex-wrap: wrap;
-    gap: 0.55rem;
+    gap: 0.1rem;
   }
 
   .original-price {
-    font-size: 0.86rem;
+    font-size: 0.72rem;
   }
 
   .current-price {
-    font-size: 1.65rem;
+    font-size: 1.22rem;
+    letter-spacing: -0.5px;
   }
 
   .buy-btn {
-    min-height: 46px;
-    padding: 0.75rem;
-    font-size: 0.92rem;
+    min-height: 40px;
+    padding: 0.62rem 0.4rem;
+    font-size: 0.76rem;
   }
 
   .card-badges {
-    top: 10px;
-    right: 10px;
-    gap: 4px;
+    top: 8px;
+    right: 8px;
+    gap: 3px;
   }
 
   .discount-badge,
   .urgency-badge {
-    font-size: 0.7rem;
-    padding: 3px 8px;
+    font-size: 0.58rem;
+    padding: 2px 6px;
   }
 
   .steps-grid {
@@ -1376,6 +1384,37 @@ footer p {
   .category-pill {
     font-size: 0.82rem;
     padding: 0.4rem 1rem;
+  }
+
+  .product-grid {
+    gap: 0.65rem;
+  }
+
+  .product-card {
+    padding: 0.75rem;
+  }
+
+  .product-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .product-name {
+    font-size: 0.86rem;
+  }
+
+  .product-desc {
+    font-size: 0.7rem;
+    -webkit-line-clamp: 4;
+  }
+
+  .current-price {
+    font-size: 1.08rem;
+  }
+
+  .buy-btn {
+    min-height: 38px;
+    font-size: 0.7rem;
   }
 
   .mobile-sticky-bar {
