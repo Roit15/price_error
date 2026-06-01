@@ -123,11 +123,13 @@ const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navMenu = document.getElementById('navMenu');
 const scrollTopBtn = document.getElementById('scrollTopBtn');
 const categoryFilters = document.getElementById('categoryFilters');
+const productSearch = document.getElementById('productSearch');
 const mobileStickyBar = document.querySelector('.mobile-sticky-bar');
 
 let selectedProduct = null;
 let previouslyFocusedElement = null;
 let currentCategory = 'all';
+let currentSearch = '';
 
 // ==========================================
 // Intersection Observer for scroll animations
@@ -188,11 +190,21 @@ if (categoryFilters) {
     });
 }
 
+if (productSearch) {
+    productSearch.addEventListener('input', () => {
+        currentSearch = productSearch.value.trim().toLowerCase();
+        filterProducts();
+    });
+}
+
 function filterProducts() {
     const cards = productGrid.querySelectorAll('.product-card');
     cards.forEach(card => {
         const cat = card.getAttribute('data-category');
-        if (currentCategory === 'all' || cat === currentCategory) {
+        const text = card.textContent.toLowerCase();
+        const matchesCategory = currentCategory === 'all' || cat === currentCategory;
+        const matchesSearch = !currentSearch || text.includes(currentSearch);
+        if (matchesCategory && matchesSearch) {
             card.classList.remove('hidden');
         } else {
             card.classList.add('hidden');
