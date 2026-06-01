@@ -306,7 +306,7 @@ function openModal(productId) {
     modalProductPrice.textContent = selectedProduct.price.toLocaleString();
     upiIdText.textContent = UPI_ID;
 
-    modalQrCode.src = `assets/payment-qr.jpg?v=20260601-upi`;
+    modalQrCode.src = `assets/payment-qr.jpg?v=20260601-qr-clean`;
 
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
