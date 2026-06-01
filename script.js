@@ -209,13 +209,13 @@ function renderProducts() {
         let badgesHtml = '';
         // Urgency badges on select products
         const urgencyMap = {
-            'gemini-pro-18m': '✨ AI Deal',
-            'chatgpt-plus-1m': '⚡ Hot',
-            'notion-business-ai-3m': '🔥 Limited',
-            'canva-1y': '🔥 3 Left',
-            'linkedin-carrier-12m': '⚡ Popular',
-            'cult-elite-1m': '🏃 5 Left',
-            'sonyliv-1y': '🎬 Hot Deal'
+            'gemini-pro-18m': 'AI Deal',
+            'chatgpt-plus-1m': 'Popular',
+            'notion-business-ai-3m': 'Limited',
+            'canva-1y': '3 Left',
+            'linkedin-carrier-12m': 'Popular',
+            'cult-elite-1m': '5 Left',
+            'sonyliv-1y': 'Hot Deal'
         };
         if (urgencyMap[product.id]) {
             badgesHtml += `<div class="urgency-badge">${urgencyMap[product.id]}</div>`;
