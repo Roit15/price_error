@@ -89,6 +89,15 @@ const products = [
         category: "entertainment"
     },
     {
+        id: "prime-video-6m",
+        name: "Amazon Prime Video (6M)",
+        desc: "6 Months Prime Video access without ads. Watch movies, shows, and Amazon Originals.",
+        originalPrice: 2000,
+        price: 499,
+        icon: "assets/icons/prime-video-ic.svg",
+        category: "entertainment"
+    },
+    {
         id: "zee5-1y",
         name: "Zee5 HD Premium (1 Year)",
         desc: "1 Year Premium Subscription. Stream HD movies, TV shows, and original web series.",
@@ -210,7 +219,8 @@ function renderProducts() {
             'canva-1y': '3 Left',
             'linkedin-career-premium': 'Popular',
             'cult-elite-1m': '5 Left',
-            'sonyliv-1y': 'Hot Deal'
+            'sonyliv-1y': 'Hot Deal',
+            'prime-video-6m': 'New'
         };
         if (urgencyMap[product.id]) {
             badgesHtml += `<div class="urgency-badge">${urgencyMap[product.id]}</div>`;
