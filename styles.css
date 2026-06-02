@@ -454,6 +454,14 @@ nav a:hover::after {
   overflow: hidden;
 }
 
+.product-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+  border-radius: 12px;
+}
+
 .product-card:hover .product-icon {
   transform: scale(1.08) rotate(-2deg);
 }
@@ -471,6 +479,13 @@ nav a:hover::after {
   margin-bottom: 1.2rem;
   flex-grow: 1;
   line-height: 1.55;
+}
+
+.terms-note {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  margin: -0.6rem 0 0.85rem;
 }
 
 .product-price-box {
@@ -1273,6 +1288,11 @@ footer p {
     overflow: hidden;
   }
 
+  .terms-note {
+    font-size: 0.62rem;
+    margin: -0.35rem 0 0.65rem;
+  }
+
   .product-price-box {
     margin-bottom: 0.75rem;
     flex-direction: column;
@@ -1434,6 +1454,10 @@ footer p {
   .product-desc {
     font-size: 0.7rem;
     -webkit-line-clamp: 4;
+  }
+
+  .terms-note {
+    font-size: 0.58rem;
   }
 
   .current-price {

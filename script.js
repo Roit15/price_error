@@ -10,7 +10,7 @@ const products = [
         desc: "18 Months access with Gemini 2.5 Pro, VEO3, Flow AI, NotebookLM, Workspace AI, 1000 AI credits/month, and 5TB storage.",
         originalPrice: 35100,
         price: 2999,
-        icon: "assets/icons/gemini-ic.svg",
+        icon: "assets/icons/gemini-official.svg",
         category: "ai"
     },
     {
@@ -19,7 +19,7 @@ const products = [
         desc: "Personal account access on your email. Full warranty available after activation.",
         originalPrice: 1999,
         price: 549,
-        icon: "assets/icons/chatgpt-ic.svg",
+        icon: "assets/icons/chatgpt-official.svg",
         category: "ai"
     },
     {
@@ -28,7 +28,7 @@ const products = [
         desc: "Customer email invite with private access. Includes Notion AI, unlimited pages, team workspaces, permissions, and project tools.",
         originalPrice: 12500,
         price: 999,
-        icon: "assets/icons/notion-ic.svg",
+        icon: "assets/icons/notion-official.svg",
         category: "ai"
     },
     {
@@ -38,8 +38,9 @@ const products = [
         originalPrice: 996,
         price: 249,
         unit: "/mo",
-        icon: "assets/icons/linkedin-ic.png",
-        category: "linkedin"
+        icon: "assets/icons/linkedin-official.svg",
+        category: "linkedin",
+        termsNote: "* Voucher cost is applicable. Terms & conditions apply."
     },
     {
         id: "linkedin-business-premium",
@@ -48,8 +49,9 @@ const products = [
         originalPrice: 1996,
         price: 499,
         unit: "/mo",
-        icon: "assets/icons/linkedin-ic.png",
-        category: "linkedin"
+        icon: "assets/icons/linkedin-official.svg",
+        category: "linkedin",
+        termsNote: "* Voucher cost is applicable. Terms & conditions apply."
     },
     {
         id: "linkedin-sales-navigator-core",
@@ -58,8 +60,9 @@ const products = [
         originalPrice: 8920,
         price: 2230,
         unit: "/mo",
-        icon: "assets/icons/linkedin-ic.png",
-        category: "linkedin"
+        icon: "assets/icons/linkedin-official.svg",
+        category: "linkedin",
+        termsNote: "* Voucher cost is applicable. Terms & conditions apply."
     },
     {
         id: "canva-1y",
@@ -67,7 +70,7 @@ const products = [
         desc: "Design like a professional with premium templates, brand kit access, and AI tools.",
         originalPrice: 3999,
         price: 1499,
-        icon: "assets/icons/canva-ic.png",
+        icon: "assets/icons/canva-official.svg",
         category: "design"
     },
     {
@@ -76,7 +79,7 @@ const products = [
         desc: "Achieve fitness goals with unlimited access to premium workouts and elite gym centers.",
         originalPrice: 3000,
         price: 1999,
-        icon: "assets/icons/cult-ic.png",
+        icon: "assets/icons/cultfit-official.svg",
         category: "fitness"
     },
     {
@@ -85,7 +88,7 @@ const products = [
         desc: "Full body health checkup at home with 90+ tests. Includes CBC, diabetes, thyroid, liver & kidney, lipid profile, iron deficiency, urine analysis, and digital reports.",
         originalPrice: 1999,
         price: 499,
-        icon: "assets/icons/health-checkup-ic.svg",
+        icon: "assets/icons/thyrocare-official.svg",
         category: "health"
     },
     {
@@ -94,7 +97,7 @@ const products = [
         desc: "1 Year Premium Subscription. Enjoy exclusive movies, web series, and live sports ad-free.",
         originalPrice: 999,
         price: 499,
-        icon: "assets/icons/sony-ic.png",
+        icon: "assets/icons/sonyliv-official.svg",
         category: "entertainment"
     },
     {
@@ -103,7 +106,7 @@ const products = [
         desc: "6 Months Prime Video access without ads. Watch movies, shows, and Amazon Originals.",
         originalPrice: 2000,
         price: 499,
-        icon: "assets/icons/prime-video-ic.svg",
+        icon: "assets/icons/prime-video-official.svg",
         category: "entertainment"
     },
     {
@@ -112,7 +115,7 @@ const products = [
         desc: "1 Year Premium Subscription. Stream HD movies, TV shows, and original web series.",
         originalPrice: 1999,
         price: 1499,
-        icon: "assets/icons/zee5-ic.png",
+        icon: "assets/icons/zee5-official.svg",
         category: "entertainment"
     }
 ];
@@ -256,11 +259,14 @@ function renderProducts() {
         card.setAttribute('data-category', product.category);
         card.style.transitionDelay = `${(index % 4) * 0.1}s`;
 
+        const termsHtml = product.termsNote ? `<p class="terms-note">${product.termsNote}</p>` : '';
+
         card.innerHTML = `
       <div class="card-badges">${badgesHtml}</div>
-      <div class="product-icon"><img src="${product.icon}?v=6" alt="${product.name} icon" loading="lazy" style="width:100%; height:100%; border-radius:12px; object-fit:cover;"></div>
+      <div class="product-icon"><img src="${product.icon}?v=20260602-icons" alt="${product.name} official icon" loading="lazy"></div>
       <h3 class="product-name">${product.name}</h3>
       <p class="product-desc">${product.desc}</p>
+      ${termsHtml}
       <div class="product-price-box">
         <span class="original-price">₹${product.originalPrice.toLocaleString()}</span>
         <span class="current-price">₹${product.price.toLocaleString()}${product.unit ? `<span class="price-unit">${product.unit}</span>` : ''}</span>
