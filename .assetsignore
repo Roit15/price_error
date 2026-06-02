@@ -3,4 +3,5 @@
 .wrangler
 .DS_Store
 .assetsignore
+.htaccess
 wrangler.toml
