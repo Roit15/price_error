@@ -32,6 +32,15 @@ const products = [
         category: "ai"
     },
     {
+        id: "ms-office-365-pro-plus-1y",
+        name: "MS Office 365 Pro Plus",
+        desc: "1 Year subscription for Windows, Mac, and Android. Up to 5 devices, 100GB OneDrive, private login, and 1-year warranty.",
+        originalPrice: 6899,
+        price: 1999,
+        icon: "assets/icons/microsoft-office-official.svg",
+        category: "productivity"
+    },
+    {
         id: "linkedin-career-premium",
         name: "LinkedIn Career Premium",
         desc: "See who viewed your profile, InMail & message anyone, job search & apply, interview prep, and salary insights. + ₹1499 voucher (if applicable).",
@@ -240,6 +249,7 @@ function renderProducts() {
             'gemini-pro-18m': 'AI Deal',
             'chatgpt-plus-1m': 'Popular',
             'notion-business-ai-3m': 'Limited',
+            'ms-office-365-pro-plus-1y': '1 Year',
             'canva-1y': '3 Left',
             'linkedin-career-premium': 'Popular',
             'cult-elite-1m': '5 Left',
@@ -263,7 +273,7 @@ function renderProducts() {
 
         card.innerHTML = `
       <div class="card-badges">${badgesHtml}</div>
-      <div class="product-icon"><img src="${product.icon}?v=20260602-icons" alt="${product.name} official icon" loading="lazy"></div>
+      <div class="product-icon"><img src="${product.icon}?v=20260603-office" alt="${product.name} official icon" loading="lazy"></div>
       <h3 class="product-name">${product.name}</h3>
       <p class="product-desc">${product.desc}</p>
       ${termsHtml}
