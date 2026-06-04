@@ -41,6 +41,15 @@ const products = [
         category: "productivity"
     },
     {
+        id: "granola-business-10-seats-12m",
+        name: "Granola Business (10 Seats)",
+        desc: "12 Months access for 10 business seats. AI meeting notes, summaries, action items, workspace search, Google Meet, Zoom, Teams, and shared team knowledge base.",
+        originalPrice: 50000,
+        price: 2999,
+        icon: "assets/icons/granola-official.svg",
+        category: "productivity"
+    },
+    {
         id: "linkedin-career-premium",
         name: "LinkedIn Career Premium",
         desc: "See who viewed your profile, InMail & message anyone, job search & apply, interview prep, and salary insights. + ₹1499 voucher (if applicable).",
@@ -254,6 +263,7 @@ function renderProducts() {
             'chatgpt-plus-1m': 'Popular',
             'notion-business-ai-3m': 'Limited',
             'ms-office-365-pro-plus-1y': '1 Year',
+            'granola-business-10-seats-12m': '10 Seats',
             'canva-1y': '3 Left',
             'linkedin-career-premium': 'Popular',
             'cult-elite-1m': '5 Left',
@@ -277,7 +287,7 @@ function renderProducts() {
 
         card.innerHTML = `
       <div class="card-badges">${badgesHtml}</div>
-      <div class="product-icon"><img src="${product.icon}?v=20260603-office" alt="${product.name} official icon" loading="lazy"></div>
+      <div class="product-icon"><img src="${product.icon}?v=20260604-granola" alt="${product.name} official icon" loading="lazy"></div>
       <h3 class="product-name">${product.name}</h3>
       <p class="product-desc">${product.desc}</p>
       ${termsHtml}
