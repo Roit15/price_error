@@ -129,6 +129,10 @@ const products = [
     }
 ];
 
+function getProductUrl(productId) {
+    return `/deals/${productId}/`;
+}
+
 // DOM Elements
 const productGrid = document.getElementById('productGrid');
 const modalOverlay = document.getElementById('paymentModal');
@@ -281,7 +285,10 @@ function renderProducts() {
         <span class="original-price">₹${product.originalPrice.toLocaleString()}</span>
         <span class="current-price">₹${product.price.toLocaleString()}${product.unit ? `<span class="price-unit">${product.unit}</span>` : ''}</span>
       </div>
-      <button class="buy-btn" data-id="${product.id}">Buy Now</button>
+      <div class="card-actions">
+        <a class="details-link" href="${getProductUrl(product.id)}">View details</a>
+        <button class="buy-btn" data-id="${product.id}">Buy Now</button>
+      </div>
     `;
 
         productGrid.appendChild(card);

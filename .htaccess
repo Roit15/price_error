@@ -1,0 +1,5 @@
+DirectoryIndex index.html
+
+RewriteEngine On
+RewriteRule ^terms-of-use/?$ /terms/ [R=301,L]
+RewriteRule ^product-category/uncategorized/?$ /deals/ [R=301,L]
