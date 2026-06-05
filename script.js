@@ -16,7 +16,7 @@ const products = [
     {
         id: "chatgpt-plus-1m",
         name: "ChatGPT Plus (1 Month)",
-        desc: "Personal account access on your email. Full warranty available after activation.",
+        desc: "1 Month Plus personal account access on your email. Official price ₹1,999/month. Full warranty available after activation.",
         originalPrice: 1999,
         price: 549,
         icon: "assets/icons/chatgpt-official.svg",
@@ -25,7 +25,7 @@ const products = [
     {
         id: "notion-business-ai-3m",
         name: "Notion Business + AI (3M)",
-        desc: "Customer email invite with private access. Includes Notion AI, unlimited pages, team workspaces, permissions, and project tools.",
+        desc: "3 Months Business Plan + AI via customer email invite. Private access, no sharing, unlimited pages, AI writing, team workspaces, permissions, and project tools.",
         originalPrice: 12500,
         price: 999,
         icon: "assets/icons/notion-official.svg",
@@ -50,37 +50,45 @@ const products = [
         category: "productivity"
     },
     {
+        id: "coursera-plus-1y",
+        name: "Coursera Plus (1 Year)",
+        desc: "12 Months premium access activated directly on your email. Includes 10,000+ courses, unlimited certificates, professional certificates, guided projects, specializations, AI learning coach, and mobile/PC learning.",
+        price: 2999,
+        icon: "assets/icons/coursera-official.svg",
+        category: "learning"
+    },
+    {
         id: "linkedin-career-premium",
         name: "LinkedIn Career Premium",
-        desc: "See who viewed your profile, InMail & message anyone, job search & apply, interview prep, and salary insights. + ₹1499 voucher (if applicable).",
+        desc: "See who viewed your profile, InMail & message anyone, job search & apply, interview prep, and salary insights.",
         originalPrice: 996,
         price: 249,
         unit: "/mo",
         icon: "assets/icons/linkedin-official.svg",
         category: "linkedin",
-        termsNote: "* Voucher cost is applicable. Terms & conditions apply."
+        termsNote: "* ₹1,499 voucher cost gives 75% off monthly billing. Pay that voucher cost directly to LinkedIn."
     },
     {
         id: "linkedin-business-premium",
         name: "LinkedIn Business Premium",
-        desc: "Lead generation, advanced search filters, company insights, Sales Navigator features, and insights & analytics. + ₹1499 voucher (if applicable).",
+        desc: "Lead generation, advanced search filters, company insights, Sales Navigator features, and insights & analytics.",
         originalPrice: 1996,
         price: 499,
         unit: "/mo",
         icon: "assets/icons/linkedin-official.svg",
         category: "linkedin",
-        termsNote: "* Voucher cost is applicable. Terms & conditions apply."
+        termsNote: "* ₹1,499 voucher cost gives 75% off monthly billing. Pay that voucher cost directly to LinkedIn."
     },
     {
         id: "linkedin-sales-navigator-core",
         name: "LinkedIn Sales Navigator Core",
-        desc: "Advanced lead search, lead & account insights, smart filters, real-time updates, and Sales Navigator Core. + ₹1499 voucher (if applicable).",
+        desc: "Advanced lead search, lead & account insights, smart filters, real-time updates, and Sales Navigator Core.",
         originalPrice: 8920,
         price: 2230,
         unit: "/mo",
         icon: "assets/icons/linkedin-official.svg",
         category: "linkedin",
-        termsNote: "* Voucher cost is applicable. Terms & conditions apply."
+        termsNote: "* ₹1,499 voucher cost gives 75% off monthly billing. Pay that voucher cost directly to LinkedIn."
     },
     {
         id: "canva-1y",
@@ -253,7 +261,8 @@ function renderProducts() {
     productGrid.innerHTML = '';
 
     products.forEach((product, index) => {
-        const discount = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+        const hasOriginalPrice = Number.isFinite(product.originalPrice) && product.originalPrice > product.price;
+        const discount = hasOriginalPrice ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
 
         // Badges
         let badgesHtml = '';
@@ -264,6 +273,7 @@ function renderProducts() {
             'notion-business-ai-3m': 'Limited',
             'ms-office-365-pro-plus-1y': '1 Year',
             'granola-business-10-seats-12m': '10 Seats',
+            'coursera-plus-1y': '1 Year',
             'canva-1y': '3 Left',
             'linkedin-career-premium': 'Popular',
             'cult-elite-1m': '5 Left',
@@ -284,15 +294,16 @@ function renderProducts() {
         card.style.transitionDelay = `${(index % 4) * 0.1}s`;
 
         const termsHtml = product.termsNote ? `<p class="terms-note">${product.termsNote}</p>` : '';
+        const originalPriceHtml = hasOriginalPrice ? `<span class="original-price">₹${product.originalPrice.toLocaleString()}</span>` : '';
 
         card.innerHTML = `
       <div class="card-badges">${badgesHtml}</div>
-      <div class="product-icon"><img src="${product.icon}?v=20260604-granola" alt="${product.name} official icon" loading="lazy"></div>
+      <div class="product-icon"><img src="${product.icon}?v=20260605-coursera" alt="${product.name} official icon" loading="lazy"></div>
       <h3 class="product-name">${product.name}</h3>
       <p class="product-desc">${product.desc}</p>
       ${termsHtml}
       <div class="product-price-box">
-        <span class="original-price">₹${product.originalPrice.toLocaleString()}</span>
+        ${originalPriceHtml}
         <span class="current-price">₹${product.price.toLocaleString()}${product.unit ? `<span class="price-unit">${product.unit}</span>` : ''}</span>
       </div>
       <div class="card-actions">
