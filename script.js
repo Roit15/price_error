@@ -10,7 +10,7 @@ const products = [
         desc: "18 Months access with Gemini 2.5 Pro, VEO3, Flow AI, NotebookLM, Workspace AI, 1000 AI credits/month, and 5TB storage.",
         originalPrice: 35100,
         price: 2999,
-        icon: "assets/icons/gemini-official.svg",
+        icon: "/assets/icons/gemini-official.svg",
         category: "ai"
     },
     {
@@ -19,7 +19,7 @@ const products = [
         desc: "1 Month Plus personal account access on your email. Official price ₹1,999/month. Full warranty available after activation.",
         originalPrice: 1999,
         price: 549,
-        icon: "assets/icons/chatgpt-official.svg",
+        icon: "/assets/icons/chatgpt-official.svg",
         category: "ai"
     },
     {
@@ -28,7 +28,7 @@ const products = [
         desc: "3 Months Business Plan + AI via customer email invite. Private access, no sharing, unlimited pages, AI writing, team workspaces, permissions, and project tools.",
         originalPrice: 12500,
         price: 999,
-        icon: "assets/icons/notion-official.svg",
+        icon: "/assets/icons/notion-official.svg",
         category: "ai"
     },
     {
@@ -37,7 +37,7 @@ const products = [
         desc: "1 Year subscription for Windows, Mac, and Android. Up to 5 devices, 100GB OneDrive, private login, and 1-year warranty.",
         originalPrice: 6899,
         price: 1999,
-        icon: "assets/icons/microsoft-office-official.svg",
+        icon: "/assets/icons/microsoft-office-official.svg",
         category: "productivity"
     },
     {
@@ -46,7 +46,7 @@ const products = [
         desc: "12 Months access for 10 business seats. AI meeting notes, summaries, action items, workspace search, Google Meet, Zoom, Teams, and shared team knowledge base.",
         originalPrice: 50000,
         price: 2999,
-        icon: "assets/icons/granola-official.svg",
+        icon: "/assets/icons/granola-official.svg",
         category: "productivity"
     },
     {
@@ -54,7 +54,7 @@ const products = [
         name: "Coursera Plus (1 Year)",
         desc: "12 Months premium access activated directly on your email. Includes 10,000+ courses, unlimited certificates, professional certificates, guided projects, specializations, AI learning coach, and mobile/PC learning.",
         price: 2999,
-        icon: "assets/icons/coursera-official.svg",
+        icon: "/assets/icons/coursera-official.svg",
         category: "learning"
     },
     {
@@ -64,7 +64,7 @@ const products = [
         originalPrice: 996,
         price: 249,
         unit: "/mo",
-        icon: "assets/icons/linkedin-official.svg",
+        icon: "/assets/icons/linkedin-official.svg",
         category: "linkedin",
         termsNote: "* ₹1,499 voucher cost gives 75% off monthly billing. Pay that voucher cost directly to LinkedIn."
     },
@@ -75,7 +75,7 @@ const products = [
         originalPrice: 1996,
         price: 499,
         unit: "/mo",
-        icon: "assets/icons/linkedin-official.svg",
+        icon: "/assets/icons/linkedin-official.svg",
         category: "linkedin",
         termsNote: "* ₹1,499 voucher cost gives 75% off monthly billing. Pay that voucher cost directly to LinkedIn."
     },
@@ -86,7 +86,7 @@ const products = [
         originalPrice: 8920,
         price: 2230,
         unit: "/mo",
-        icon: "assets/icons/linkedin-official.svg",
+        icon: "/assets/icons/linkedin-official.svg",
         category: "linkedin",
         termsNote: "* ₹1,499 voucher cost gives 75% off monthly billing. Pay that voucher cost directly to LinkedIn."
     },
@@ -96,7 +96,7 @@ const products = [
         desc: "Design like a professional with premium templates, brand kit access, and AI tools.",
         originalPrice: 3999,
         price: 1499,
-        icon: "assets/icons/canva-official.svg",
+        icon: "/assets/icons/canva-official.svg",
         category: "design"
     },
     {
@@ -105,7 +105,7 @@ const products = [
         desc: "Achieve fitness goals with unlimited access to premium workouts and elite gym centers.",
         originalPrice: 3000,
         price: 1999,
-        icon: "assets/icons/cultfit-official.svg",
+        icon: "/assets/icons/cultfit-official.svg",
         category: "fitness"
     },
     {
@@ -114,7 +114,7 @@ const products = [
         desc: "Full body health checkup at home with 90+ tests. Includes CBC, diabetes, thyroid, liver & kidney, lipid profile, iron deficiency, urine analysis, and digital reports.",
         originalPrice: 1999,
         price: 499,
-        icon: "assets/icons/thyrocare-official.svg",
+        icon: "/assets/icons/thyrocare-official.svg",
         category: "health"
     },
     {
@@ -123,7 +123,7 @@ const products = [
         desc: "1 Year Premium Subscription. Enjoy exclusive movies, web series, and live sports ad-free.",
         originalPrice: 999,
         price: 499,
-        icon: "assets/icons/sonyliv-official.svg",
+        icon: "/assets/icons/sonyliv-official.svg",
         category: "entertainment"
     },
     {
@@ -132,7 +132,7 @@ const products = [
         desc: "6 Months Prime Video access without ads. Watch movies, shows, and Amazon Originals.",
         originalPrice: 2000,
         price: 499,
-        icon: "assets/icons/prime-video-official.svg",
+        icon: "/assets/icons/prime-video-official.svg",
         category: "entertainment"
     },
     {
@@ -141,7 +141,7 @@ const products = [
         desc: "1 Year Premium Subscription. Stream HD movies, TV shows, and original web series.",
         originalPrice: 1999,
         price: 1499,
-        icon: "assets/icons/zee5-official.svg",
+        icon: "/assets/icons/zee5-official.svg",
         category: "entertainment"
     }
 ];
@@ -378,7 +378,7 @@ function openModal(productId) {
     if (modalPricePeriod) modalPricePeriod.textContent = selectedProduct.unit ? ' /month' : '';
     upiIdText.textContent = UPI_ID;
 
-    modalQrCode.src = `assets/payment-qr.jpg?v=20260601-qr-clean`;
+    modalQrCode.src = `/assets/payment-qr.jpg?v=20260601-qr-clean`;
 
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
