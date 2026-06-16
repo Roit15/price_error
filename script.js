@@ -10,7 +10,8 @@ const products = [
         desc: "18 Months access with Gemini 2.5 Pro, VEO3, Flow AI, NotebookLM, Workspace AI, 1000 AI credits/month, and 5TB storage.",
         originalPrice: 35100,
         price: 2999,
-        icon: "/assets/icons/gemini-official.svg",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/gemini-official.svg",
         category: "ai"
     },
     {
@@ -19,7 +20,7 @@ const products = [
         desc: "1 Month Plus personal account access on your email. Official price ₹1,999/month. Full warranty available after activation.",
         originalPrice: 1999,
         price: 549,
-        icon: "/assets/icons/chatgpt-official.svg",
+        icon: "assets/icons/chatgpt-official.svg",
         category: "ai"
     },
     {
@@ -28,7 +29,7 @@ const products = [
         desc: "3 Months Business Plan + AI via customer email invite. Private access, no sharing, unlimited pages, AI writing, team workspaces, permissions, and project tools.",
         originalPrice: 12500,
         price: 999,
-        icon: "/assets/icons/notion-official.svg",
+        icon: "assets/icons/notion-official.svg",
         category: "ai"
     },
     {
@@ -37,7 +38,7 @@ const products = [
         desc: "1 Year subscription for Windows, Mac, and Android. Up to 5 devices, 100GB OneDrive, private login, and 1-year warranty.",
         originalPrice: 6899,
         price: 1999,
-        icon: "/assets/icons/microsoft-office-official.svg",
+        icon: "assets/icons/microsoft-office-official.svg",
         category: "productivity"
     },
     {
@@ -46,7 +47,7 @@ const products = [
         desc: "12 Months access for 10 business seats. AI meeting notes, summaries, action items, workspace search, Google Meet, Zoom, Teams, and shared team knowledge base.",
         originalPrice: 50000,
         price: 2999,
-        icon: "/assets/icons/granola-official.svg",
+        icon: "assets/icons/granola-official.svg",
         category: "productivity"
     },
     {
@@ -54,7 +55,7 @@ const products = [
         name: "Coursera Plus (1 Year)",
         desc: "12 Months premium access activated directly on your email. Includes 10,000+ courses, unlimited certificates, professional certificates, guided projects, specializations, AI learning coach, and mobile/PC learning.",
         price: 2999,
-        icon: "/assets/icons/coursera-official.svg",
+        icon: "assets/icons/coursera-official.svg",
         category: "learning"
     },
     {
@@ -64,7 +65,7 @@ const products = [
         originalPrice: 996,
         price: 249,
         unit: "/mo",
-        icon: "/assets/icons/linkedin-official.svg",
+        icon: "assets/icons/linkedin-official.svg",
         category: "linkedin",
         termsNote: "* ₹1,499 voucher cost gives 75% off monthly billing. Pay that voucher cost directly to LinkedIn."
     },
@@ -75,7 +76,7 @@ const products = [
         originalPrice: 1996,
         price: 499,
         unit: "/mo",
-        icon: "/assets/icons/linkedin-official.svg",
+        icon: "assets/icons/linkedin-official.svg",
         category: "linkedin",
         termsNote: "* ₹1,499 voucher cost gives 75% off monthly billing. Pay that voucher cost directly to LinkedIn."
     },
@@ -86,7 +87,7 @@ const products = [
         originalPrice: 8920,
         price: 2230,
         unit: "/mo",
-        icon: "/assets/icons/linkedin-official.svg",
+        icon: "assets/icons/linkedin-official.svg",
         category: "linkedin",
         termsNote: "* ₹1,499 voucher cost gives 75% off monthly billing. Pay that voucher cost directly to LinkedIn."
     },
@@ -96,7 +97,7 @@ const products = [
         desc: "Design like a professional with premium templates, brand kit access, and AI tools.",
         originalPrice: 3999,
         price: 1499,
-        icon: "/assets/icons/canva-official.svg",
+        icon: "assets/icons/canva-official.svg",
         category: "design"
     },
     {
@@ -105,7 +106,7 @@ const products = [
         desc: "Achieve fitness goals with unlimited access to premium workouts and elite gym centers.",
         originalPrice: 3000,
         price: 1999,
-        icon: "/assets/icons/cultfit-official.svg",
+        icon: "assets/icons/cultfit-official.svg",
         category: "fitness"
     },
     {
@@ -114,7 +115,7 @@ const products = [
         desc: "Full body health checkup at home with 90+ tests. Includes CBC, diabetes, thyroid, liver & kidney, lipid profile, iron deficiency, urine analysis, and digital reports.",
         originalPrice: 1999,
         price: 499,
-        icon: "/assets/icons/thyrocare-official.svg",
+        icon: "assets/icons/thyrocare-official.svg",
         category: "health"
     },
     {
@@ -123,7 +124,7 @@ const products = [
         desc: "1 Year Premium Subscription. Enjoy exclusive movies, web series, and live sports ad-free.",
         originalPrice: 999,
         price: 499,
-        icon: "/assets/icons/sonyliv-official.svg",
+        icon: "assets/icons/sonyliv-official.svg",
         category: "entertainment"
     },
     {
@@ -132,7 +133,7 @@ const products = [
         desc: "6 Months Prime Video access without ads. Watch movies, shows, and Amazon Originals.",
         originalPrice: 2000,
         price: 499,
-        icon: "/assets/icons/prime-video-official.svg",
+        icon: "assets/icons/prime-video-official.svg",
         category: "entertainment"
     },
     {
@@ -141,12 +142,191 @@ const products = [
         desc: "1 Year Premium Subscription. Stream HD movies, TV shows, and original web series.",
         originalPrice: 1999,
         price: 1499,
-        icon: "/assets/icons/zee5-official.svg",
+        icon: "assets/icons/zee5-official.svg",
         category: "entertainment"
+    },
+    {
+        id: "indy-pro",
+        name: "INDY PRO",
+        desc: "Premium access for creators, operators, and online business workflows. Message us to confirm current slot availability.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/indy-official.png",
+        category: "tools"
+    },
+    {
+        id: "manus-ai-pro",
+        name: "Manus AI Pro",
+        desc: "Pro AI workspace access for research, task automation, and productivity use cases. Activation details shared on WhatsApp.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/manus-official.png",
+        category: "ai"
+    },
+    {
+        id: "framer-pro",
+        name: "Framer Pro",
+        desc: "Professional website builder access for landing pages, portfolios, and product sites.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/framer-official.svg",
+        category: "design"
+    },
+    {
+        id: "gumloop-pro",
+        name: "Gumloop Pro",
+        desc: "Automation builder access for AI workflows, data tasks, and no-code operations.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/gumloop-official.ico",
+        category: "ai"
+    },
+    {
+        id: "pycharm-pro",
+        name: "PyCharm Pro",
+        desc: "Professional Python IDE access for coding, debugging, testing, and backend development.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/pycharm-official.svg",
+        category: "tools"
+    },
+    {
+        id: "mobbin-team-access-10-seats",
+        name: "Mobbin Team Access (10 Seats)",
+        desc: "Team access for UI inspiration, app screens, and product design research.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/mobbin-official.svg",
+        category: "design"
+    },
+    {
+        id: "notion-business-workspace",
+        name: "Notion Business Workspace",
+        desc: "Business workspace access for docs, projects, teams, and productivity systems.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/notion-official.svg",
+        category: "productivity"
+    },
+    {
+        id: "railway-245-credits",
+        name: "Railway ($245 Credits)",
+        desc: "Cloud deployment credits for apps, databases, APIs, and developer experiments.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/railway-official.svg",
+        category: "tools"
+    },
+    {
+        id: "warp-build-premium",
+        name: "Warp Build Premium",
+        desc: "Premium terminal and developer workflow access for faster command-line productivity.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/warp-official.svg",
+        category: "tools"
+    },
+    {
+        id: "wispr-flow-pro",
+        name: "Wispr Flow Pro",
+        desc: "Voice productivity access for dictation, writing, and faster daily communication.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/wispr-flow-official.png",
+        category: "ai"
+    },
+    {
+        id: "elevenlabs-creator",
+        name: "ElevenLabs Creator",
+        desc: "Creator access for AI voice generation, narration, dubbing, and content workflows.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/elevenlabs-official.svg",
+        category: "ai"
+    },
+    {
+        id: "cursor-pro",
+        name: "Cursor Pro",
+        desc: "AI coding editor access for faster development, refactors, and project work.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/cursor-official.svg",
+        category: "tools"
+    },
+    {
+        id: "gamma-pro",
+        name: "Gamma Pro",
+        desc: "AI presentation and document creation access for decks, proposals, and content.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/gamma-official.svg",
+        category: "ai"
+    },
+    {
+        id: "lovable-pro",
+        name: "Lovable Pro",
+        desc: "AI app-building access for prototypes, websites, and product experiments.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/lovable-official.svg",
+        category: "ai"
+    },
+    {
+        id: "supabase-pro",
+        name: "Supabase Pro",
+        desc: "Backend platform access for databases, auth, storage, APIs, and app projects.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/supabase-official.svg",
+        category: "tools"
+    },
+    {
+        id: "fireflies-pro",
+        name: "Fireflies Pro",
+        desc: "AI meeting notes, transcription, summaries, and collaboration access.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/fireflies-official.png",
+        category: "ai"
+    },
+    {
+        id: "sentaiment-starter",
+        name: "Sentaiment Starter",
+        desc: "Starter access for customer insights, sentiment workflows, and business analysis.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/sentaiment-official.webp",
+        category: "tools"
+    },
+    {
+        id: "coderabbit-pro-plus",
+        name: "CodeRabbit Pro Plus",
+        desc: "AI code review access for pull requests, engineering feedback, and team workflows.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/coderabbit-official.svg",
+        category: "tools"
+    },
+    {
+        id: "n8n-starter",
+        name: "n8n Starter",
+        desc: "Workflow automation access for integrations, triggers, and business processes.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/n8n-official.svg",
+        category: "tools"
+    },
+    {
+        id: "lightfield-crm-startup-plan",
+        name: "Lightfield CRM Startup Plan",
+        desc: "Startup CRM access for pipeline tracking, customer records, and sales operations.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/lightfield-official.png",
+        category: "tools"
+    },
+    {
+        id: "make-com-teams-480k-ops",
+        name: "Make.com Teams Plan",
+        desc: "Teams automation plan with 480,000 operations per year for advanced workflows.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/make-official.svg",
+        category: "tools"
+    },
+    {
+        id: "whimsical-1y",
+        name: "Whimsical (1 Year)",
+        desc: "Visual workspace access for flowcharts, wireframes, mind maps, and team planning.",
+        offerText: "70–80% OFF",
+        icon: "assets/icons/whimsical-official.png",
+        category: "productivity"
     }
 ];
 
 function getProductUrl(productId) {
+    if (window.location.protocol === 'file:') {
+        return `deals/${productId}/index.html`;
+    }
     return `/deals/${productId}/`;
 }
 
@@ -155,6 +335,7 @@ const productGrid = document.getElementById('productGrid');
 const modalOverlay = document.getElementById('paymentModal');
 const closeModalBtn = document.getElementById('closeModal');
 const modalProductName = document.getElementById('modalProductName');
+const modalSubtitle = document.querySelector('.modal-subtitle');
 const modalProductPrice = document.getElementById('modalProductPrice');
 const modalPricePeriod = document.getElementById('modalPricePeriod');
 const modalQrCode = document.getElementById('modalQrCode');
@@ -263,6 +444,7 @@ function renderProducts() {
     products.forEach((product, index) => {
         const hasOriginalPrice = Number.isFinite(product.originalPrice) && product.originalPrice > product.price;
         const discount = hasOriginalPrice ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
+        const isOfferOnly = Boolean(product.offerText);
 
         // Badges
         let badgesHtml = '';
@@ -284,7 +466,9 @@ function renderProducts() {
         if (urgencyMap[product.id]) {
             badgesHtml += `<div class="urgency-badge">${urgencyMap[product.id]}</div>`;
         }
-        if (discount > 0) {
+        if (isOfferOnly) {
+            badgesHtml += `<div class="discount-badge">${product.offerText}</div>`;
+        } else if (discount > 0) {
             badgesHtml += `<div class="discount-badge">${discount}% OFF</div>`;
         }
 
@@ -294,7 +478,10 @@ function renderProducts() {
         card.style.transitionDelay = `${(index % 4) * 0.1}s`;
 
         const termsHtml = product.termsNote ? `<p class="terms-note">${product.termsNote}</p>` : '';
-        const originalPriceHtml = hasOriginalPrice ? `<span class="original-price">₹${product.originalPrice.toLocaleString()}</span>` : '';
+        const originalPriceHtml = hasOriginalPrice && !isOfferOnly ? `<span class="original-price">₹${product.originalPrice.toLocaleString()}</span>` : '';
+        const priceHtml = isOfferOnly
+            ? `<span class="current-price offer-price">${product.offerText}</span>`
+            : `<span class="current-price">₹${product.price.toLocaleString()}${product.unit ? `<span class="price-unit">${product.unit}</span>` : ''}</span>`;
 
         card.innerHTML = `
       <div class="card-badges">${badgesHtml}</div>
@@ -304,7 +491,7 @@ function renderProducts() {
       ${termsHtml}
       <div class="product-price-box">
         ${originalPriceHtml}
-        <span class="current-price">₹${product.price.toLocaleString()}${product.unit ? `<span class="price-unit">${product.unit}</span>` : ''}</span>
+        ${priceHtml}
       </div>
       <div class="card-actions">
         <a class="details-link" href="${getProductUrl(product.id)}">View details</a>
@@ -374,11 +561,22 @@ function openModal(productId) {
     previouslyFocusedElement = document.activeElement;
 
     modalProductName.textContent = selectedProduct.name;
-    modalProductPrice.textContent = selectedProduct.price.toLocaleString();
-    if (modalPricePeriod) modalPricePeriod.textContent = selectedProduct.unit ? ' /month' : '';
+    const isOfferOnly = Boolean(selectedProduct.offerText);
+    modalOverlay.classList.toggle('offer-mode', isOfferOnly);
+    if (modalSubtitle) {
+        modalSubtitle.textContent = isOfferOnly
+            ? 'Confirm availability on WhatsApp and get the current offer details.'
+            : 'Pay securely via UPI and share the screenshot to get access.';
+    }
+    modalProductPrice.textContent = isOfferOnly ? selectedProduct.offerText : selectedProduct.price.toLocaleString();
+    const currency = document.querySelector('.price-display .currency');
+    if (currency) currency.hidden = isOfferOnly;
+    if (modalPricePeriod) modalPricePeriod.textContent = !isOfferOnly && selectedProduct.unit ? ' /month' : '';
     upiIdText.textContent = UPI_ID;
+    const btnText = whatsappShareBtn.querySelector('.btn-text');
+    if (btnText) btnText.textContent = isOfferOnly ? 'Confirm Deal on WhatsApp' : 'Share Screenshot & Get Access';
 
-    modalQrCode.src = `/assets/payment-qr.jpg?v=20260601-qr-clean`;
+    modalQrCode.src = `assets/payment-qr.jpg?v=20260601-qr-clean`;
 
     modalOverlay.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -443,7 +641,9 @@ whatsappShareBtn.addEventListener('click', () => {
     whatsappShareBtn.style.opacity = '0.8';
 
     setTimeout(() => {
-        const text = `Hi Price Error team! I have just paid ₹${selectedProduct.price} for *${selectedProduct.name}*. Here is my payment screenshot for verification.`;
+        const text = selectedProduct.offerText
+            ? `Hi Price Error team! I want to buy *${selectedProduct.name}* with the ${selectedProduct.offerText} deal. Please confirm availability and payment details.`
+            : `Hi Price Error team! I have just paid ₹${selectedProduct.price} for *${selectedProduct.name}*. Here is my payment screenshot for verification.`;
         const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
         window.open(url, '_blank');
 
